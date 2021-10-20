@@ -35,3 +35,9 @@ expo start
     * Develop full front end todo list
 * 0.1
     * Initial Release
+
+## Future Implementaions
+   * Usage of AsyncStorage to persist data
+   * Add more front end functionality
+      * Checkmarks on boxes 
+      * Allow user to remove tasks when completed 
