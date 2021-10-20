@@ -7,7 +7,7 @@ Simple todo list utilizing React Native and Expo to design and create a simple m
 Utilized React Native and Expo frameworks to have a better understanding of mobile development. 
 
 ## Overview
-![Adding/Completing Tasks] (https://media.giphy.com/media/Ed1I73TQtXFfyWmGsD/giphy.gif)
+![Adding/Completing Tasks](https://media.giphy.com/media/Ed1I73TQtXFfyWmGsD/giphy.gif)
 
 ## Getting Started
 
