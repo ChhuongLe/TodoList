@@ -1,5 +1,6 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import {
   StyleSheet,
   Text,
@@ -8,15 +9,18 @@ import {
   TextInput,
   TouchableOpacity,
   Keyboard,
-  AsyncStorage } from 'react-native';
+  AsyncStorage
+} from 'react-native';
 import Task from './components/Task';
+
+// This allows us the usage of having multiple screens in an app
+const Stack = createStackNavigator();
 
 export default function App() {
   const [task, setTask] = useState();
   const [taskItems, setTaskItems] = useState([]);
 
   const handleAddTask = () => {
-    Keyboard.dismiss();
     setTaskItems([...taskItems, task]);
     setTask(null);
   }
@@ -27,35 +31,46 @@ export default function App() {
     setTaskItems(itemsCopy);
   }
 
-  return (
-    <View style={styles.container}>
-      <View style={styles.tasksWrapper}>
-        <Text style={styles.sectionTitle}>Today's Tasks</Text>
+  const todoList = () => {
+    return (
+      <View style={styles.container}>
+        <View style={styles.tasksWrapper}>
+          <Text style={styles.sectionTitle}>Today's Tasks</Text>
 
-        <View style={styles.items}>
-          {/* Where tasks will go */}
-          {
-            taskItems.map((item, index) => {
-              return (
-                <TouchableOpacity key={index} onPress={() => completeTask(index)}>
-                  <Task text={item} />
-                </TouchableOpacity>
-              )
-            })
-          }
-        </View>
-      </View>
-      {/* Writing a task */}
-      <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding": "height"}
-      style={styles.writeTaskWrapper}>
-          <TextInput style={styles.input} placeholder={'Write a task'} value={task} onChangeText={text => setTask(text)}/>
-          <TouchableOpacity onPress={()=> handleAddTask()}>
-          <View style={styles.addWrapper}>
-            <Text style={styles.addText}>+</Text>
+          <View style={styles.items}>
+            {/* Where tasks will go */}
+            {
+              taskItems.map((item, index) => {
+                return (
+                  <TouchableOpacity key={index} onPress={() => completeTask(index)}>
+                    <Task text={item} />
+                  </TouchableOpacity>
+                )
+              })
+            }
           </View>
-        </TouchableOpacity>
-      </KeyboardAvoidingView>
-    </View>
+        </View>
+        {/* Writing a task */}
+        <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}
+          style={styles.writeTaskWrapper}>
+          <TextInput style={styles.input} placeholder={'Write a task'} value={task} onChangeText={text => setTask(text)} />
+          <TouchableOpacity onPress={() => handleAddTask()}>
+            <View style={styles.addWrapper}>
+              <Text style={styles.addText}>+</Text>
+            </View>
+          </TouchableOpacity>
+        </KeyboardAvoidingView>
+      </View >
+    );
+  }
+
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="todoList" component={todoList} />
+      </Stack.Navigator>
+    </NavigationContainer>
+
   );
 }
 
@@ -68,7 +83,7 @@ const styles = StyleSheet.create({
     paddingTop: 80,
     paddingHorizontal: 20,
   },
-  sectionTitle:{
+  sectionTitle: {
     fontSize: 24,
     fontWeight: 'bold',
   },
