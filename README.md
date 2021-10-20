@@ -43,4 +43,4 @@ expo start
    * Usage of AsyncStorage to persist data
    * Add more front end functionality
       * Checkmarks on boxes 
-      * Allow user to remove tasks when completed 
+      * Allow user to have the option remove tasks or strike-out when completed 
