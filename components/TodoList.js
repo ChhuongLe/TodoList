@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import Task from './Task';
 
-export default () => {
+const TodoList = () => {
   const [task, setTask] = useState();
   const [taskItems, setTaskItems] = useState([]);
 
@@ -104,3 +104,5 @@ const styles = StyleSheet.create({
   },
   addText: {},
 });
+
+export default TodoList;
