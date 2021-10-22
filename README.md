@@ -33,14 +33,15 @@ expo start
 
 * Chhuong Le (chhuongcle@gmail.com)
 
-## Version History
+## Version History 
 * 0.2 
     * Develop full front end todo list
 * 0.1
     * Initial Release
 
 ## Future Implementaions
-   * Usage of AsyncStorage to persist data
+   * Use firebase to allow users to login and persist data 
    * Add more front end functionality
       * Checkmarks on boxes 
       * Allow user to have the option remove tasks or strike-out when completed 
+      * Allow users to make sections for different types of todos
