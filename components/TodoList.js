@@ -10,6 +10,7 @@ import {
   AsyncStorage
 } from 'react-native';
 import Task from './Task';
+import Colors from '../Colors/Colors';
 
 const TodoList = () => {
   const [task, setTask] = useState();
