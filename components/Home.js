@@ -8,28 +8,53 @@ import {
   TextInput,
   TouchableOpacity,
   Keyboard,
-  AsyncStorage
+  FlatList,
 } from 'react-native';
-import { Ionicons} from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 // This will be the first screen the user will see
 // Allows them to make containers of Todos for different tasks
+const ListButton = ({ title, color }) => {
+  return (
+    <TouchableOpacity onPress={() => {}} style={[styles.itemContainer, { backgroundColor:  color }]}>
+      <View>
+        <Text style={styles.itemTitle}>{title} </Text>
+      </View>
+      <View style={{ flexDirection: "row" }}>
+        <TouchableOpacity onPress={() => {}}>
+          <Ionicons name="options-outline" size={24} color="white" />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => {}}>
+          <Ionicons name="trash-outline" size={24} color="white" />
+        </TouchableOpacity>
+      </View>
+    </TouchableOpacity>
+  )
+}
+
 const Home = () => {
   return (
-    <View style = {styles.container}>
+    <View style={styles.container}>
       {/* Inside the container should have a list title, a delete option, and options to change color */}
-      <TouchableOpacity onPress={()=> {}} style={styles.itemContainer}>
-        <View>
-          <Text style={styles.itemTitle}>List 1</Text>
-        </View>
-        <View style={{flexDirection:"row"}}>
-          <TouchableOpacity onPress={() => {}}>
-            <Ionicons name="options-outline" size={24} color="white" />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => {}}>
-            <Ionicons name="trash-outline" size={24} color="white" />
-          </TouchableOpacity>
-        </View>
-      </TouchableOpacity>
+      <FlatList data={[
+        {
+          title: "School",
+          color: Colors.green
+        },
+        {
+          title: "Work",
+          color: Colors.red,
+        },
+        {
+          title: "Fun",
+          color: Colors.teal
+        }
+      ]}
+        renderItem={({ item: { title, color }, index }) => {
+          return (
+            <ListButton title={title} color={color} />
+          );
+        }}
+      />
     </View>
   );
 }
