@@ -15,7 +15,10 @@ import { Ionicons } from '@expo/vector-icons';
 // Allows them to make containers of Todos for different tasks
 const ListButton = ({ title, color, navigation }) => {
   return (
-    <TouchableOpacity onPress={() => {navigation.navigate('todoList')}} style={[styles.itemContainer, { backgroundColor:  color }]}>
+    <TouchableOpacity
+      onPress={() => {navigation.navigate('todoList', { title, color })}}
+      style={[styles.itemContainer, { backgroundColor:  color }]}
+    >
       <View>
         <Text style={styles.itemTitle}>{title} </Text>
       </View>

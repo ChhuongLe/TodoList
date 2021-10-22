@@ -13,7 +13,17 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="homePage" component={Home} />
-        <Stack.Screen name="todoList" component={TodoList} />
+        <Stack.Screen
+          name="todoList"
+          component={TodoList}
+          options={({route})=> {
+            return (
+              {
+                title: route.params.title,
+                headerTintColor: route.params.color,
+              })
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
 
